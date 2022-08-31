@@ -1,8 +1,14 @@
 FROM openjdk:11.0.7
-ARG JAR_FILE=target/ms-customer-*.jar
 
-ENV JAVA_OPTS="-Xms64m -Xmx256m"
+ VOLUME /tmp
+  EXPOSE 8761
+  ADD ./target/eureka-server-0.0.1-SNAPSHOT.jar eureka-server.jar
+  ENTRYPOINT ["java","-jar","/eureka-server.jar"]
 
-COPY ${JAR_FILE} ms-customer.jar
-
-ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -server -jar ms-customer.jar
+# ARG JAR_FILE=target/eureka-server-*.jar
+#
+# ENV JAVA_OPTS="-Xms64m -Xmx256m"
+#
+# COPY ${JAR_FILE} eureka-server.jar
+#
+# ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -server -jar eureka-server.jar
