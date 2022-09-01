@@ -50,4 +50,4 @@ jobs:
           app-name: 'eureka-server'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F0FF5909C748411D9842D12F2A4407A5 }}
-          package: '*.war'
+          package: '*.jar'
